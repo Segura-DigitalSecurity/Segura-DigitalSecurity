@@ -1,0 +1,34 @@
+{
+  "actorSpecification": 1,
+  "name": "segura-web-scraper",
+  "title": "Segura Web Scraper",
+  "description": "Crawls websites and extracts page titles, meta descriptions, headings and links.",
+  "version": "0.1",
+  "buildTag": "latest",
+  "input": "./input_schema.json",
+  "dockerfile": "./Dockerfile",
+  "storages": {
+    "dataset": {
+      "actorSpecification": 1,
+      "views": {
+        "overview": {
+          "title": "Overview",
+          "transformation": {
+            "fields": ["url", "title", "description", "h1", "linkCount", "scrapedAt"]
+          },
+          "display": {
+            "component": "table",
+            "properties": {
+              "url": { "label": "URL", "format": "link" },
+              "title": { "label": "Title", "format": "text" },
+              "description": { "label": "Description", "format": "text" },
+              "h1": { "label": "H1", "format": "array" },
+              "linkCount": { "label": "Links", "format": "number" },
+              "scrapedAt": { "label": "Scraped at", "format": "date" }
+            }
+          }
+        }
+      }
+    }
+  }
+}
