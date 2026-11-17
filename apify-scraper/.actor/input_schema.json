@@ -1,0 +1,48 @@
+{
+  "title": "Segura Web Scraper input",
+  "type": "object",
+  "schemaVersion": 1,
+  "properties": {
+    "startUrls": {
+      "title": "Start URLs",
+      "type": "array",
+      "description": "Pages where the crawl starts.",
+      "editor": "requestListSources",
+      "prefill": [{ "url": "https://crawlee.dev" }]
+    },
+    "maxRequestsPerCrawl": {
+      "title": "Max pages",
+      "type": "integer",
+      "description": "Maximum number of pages to scrape. 0 means no limit.",
+      "default": 50,
+      "minimum": 0
+    },
+    "maxDepth": {
+      "title": "Max crawl depth",
+      "type": "integer",
+      "description": "How many links deep to follow from the start URLs. 0 scrapes only the start URLs.",
+      "default": 1,
+      "minimum": 0
+    },
+    "sameDomainOnly": {
+      "title": "Stay on the same domain",
+      "type": "boolean",
+      "description": "Only follow links on the same hostname as the page they were found on.",
+      "default": true
+    },
+    "includeLinks": {
+      "title": "Include links in output",
+      "type": "boolean",
+      "description": "Store the full list of absolute links found on each page.",
+      "default": false
+    },
+    "proxyConfiguration": {
+      "title": "Proxy configuration",
+      "type": "object",
+      "description": "Proxy settings. Leave empty to crawl without a proxy.",
+      "editor": "proxy",
+      "prefill": { "useApifyProxy": true }
+    }
+  },
+  "required": ["startUrls"]
+}
